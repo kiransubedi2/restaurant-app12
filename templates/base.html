@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Restaurant POS{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+</head><body>
+<header><a class="brand" href="{{ url_for('index') }}">🍽 Restaurant POS</a>
+<nav><a href="{{ url_for('index') }}">Tables</a><a href="{{ url_for('menu') }}">Menu</a><a href="{{ url_for('settings') }}">Tables setup</a><a href="{{ url_for('reports') }}">Reports</a></nav></header>
+<main>
+{% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}<div class="messages">{% for category,message in messages %}<div class="message {{ category }}">{{ message }}</div>{% endfor %}</div>{% endif %}{% endwith %}
+{% block content %}{% endblock %}
+</main><footer>Restaurant Order Management · Flask + SQLite</footer></body></html>

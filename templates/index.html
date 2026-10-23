@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Tables · Restaurant POS{% endblock %}{% block content %}
+<div class="page-title"><div><h1>Tables / Tabs</h1><p>Select a table to start or continue an order.</p></div><a class="button" href="{{ url_for('menu') }}">Manage menu</a></div>
+<div class="table-grid">{% for t in tables %}<a class="table-card {{ 'occupied' if t.order_id else 'free' }}" href="{{ url_for('table_order',table_id=t.id) }}">
+<div class="table-icon">▦</div><h2>{{ t.name }}</h2><span>{{ 'OPEN ORDER' if t.order_id else 'AVAILABLE' }}</span>{% if t.created_at %}<small>Started {{ t.created_at }}</small>{% endif %}</a>{% endfor %}</div>
+{% endblock %}
